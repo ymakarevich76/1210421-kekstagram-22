@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
 * Студент: [Юлия Камейша](https://up.htmlacademy.ru/javascript/22/user/1210421).
-* Наставник: `Неизвестно`.
+* Наставник: [Игорь Казанцев](https://up.htmlacademy.ru/javascript/22/user/572311).
 
 ---
 
