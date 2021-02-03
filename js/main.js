@@ -15,8 +15,6 @@ const getRandomIntegerNumber = (min, max) => {
 getRandomIntegerNumber(1,10);
 
 const getLengthComment = (checkString, maxLength) => {
-  if(checkString.length <= maxLength) {
-    return true;
-  } return false;
+  return checkString.length <= maxLength;
 }
-getLengthComment('Юля', 2);
+getLengthComment('Юля', 3);
