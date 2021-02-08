@@ -111,8 +111,8 @@ for(let i = 0; i < 25; i++) {
   g++;
   comments[i].id = g;
   comments[i].avatar = 'img/avatar-' + getRandomIntegerNumber(1,6) + '.svg',
-  comments[i].message = messages[getRandomIntegerNumber(0,1)];
-  comments[i].name = names[getRandomIntegerNumber(0, 7)];
+  comments[i].message = messages[getRandomIntegerNumber(0, messages.length - 1)];
+  comments[i].name = names[getRandomIntegerNumber(0, names.length - 1)];
 }
 
 for(let i = 0; i < 25; i++) {
@@ -129,7 +129,7 @@ for(let i = 0; i < 25; i++) {
 
   for (let g = 0; g < commentNumber; g++) {
     // Затрудняюсь сделать этот момент, подскажите, пожалуйста, как сделать, чтобы не повторялись комментарии, ведь рандом не дает гарантии, что выпадет тот же комментарий.
-    arr[i].comments[g] = comments[getRandomIntegerNumber(0, 24)];
+    arr[i].comments[g] = comments[getRandomIntegerNumber(0, comments.length - 1)];
   }
 }
 
