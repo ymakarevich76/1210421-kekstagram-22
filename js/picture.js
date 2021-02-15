@@ -14,6 +14,6 @@ const renderPictures = (picture) => {
     listFragment.appendChild(photoUser);
   })
   picturesContainer.appendChild(listFragment);
-  }
+}
 
 export { renderPictures };
