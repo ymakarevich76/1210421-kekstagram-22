@@ -53,6 +53,6 @@ const generatePhotoData = (photoCount, minNumbersComments, maxNumbersComments) =
   return photoData;
 }
 
-generatePhotoData(25, 1, 6);
+const photoUsers = generatePhotoData(25, 1, 6);
 
-export { generatePhotoData };
+export { photoUsers, generatePhotoData };
