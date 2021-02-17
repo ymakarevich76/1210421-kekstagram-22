@@ -46,13 +46,13 @@ const generatePhotoData = (photoCount, minNumbersComments, maxNumbersComments) =
     j++;
     photoData[i].id = j;
     photoData[i].url = `photos/${j}.jpg`;
-    photoData[i].description = `${j} photo description`;
+    photoData[i].description = `${j} описание фотографии`;
     photoData[i].likes = getRandomIntegerNumber(15,200);
     photoData[i].comments = getComments(generateCommentsData(25), minNumbersComments, maxNumbersComments);
   }
   return photoData;
 }
 
-const photoUsers = generatePhotoData(25, 1, 6);
+const photoUsers = generatePhotoData(25, 5, 10);
 
-export { photoUsers, generatePhotoData };
+export { photoUsers, generatePhotoData, generateCommentsData };
