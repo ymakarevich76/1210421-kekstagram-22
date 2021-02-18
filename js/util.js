@@ -5,4 +5,4 @@ const isEnterEvent = (evt) => {
   return evt.key === 'Enter';
 }
 
-export { isEscEvent, isEnterEvent }
+export { isEscEvent, isEnterEvent };

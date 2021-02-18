@@ -10,7 +10,6 @@ const listFragment = document.createDocumentFragment();
 const onButtonClick = (photo) => {
   return () => {
     openModal(photo);
-    // generateCommentsData(5);
   }
 }
 

@@ -1,5 +1,4 @@
 import { isEscEvent, isEnterEvent } from './util.js';
-import { getRandomIntegerNumber } from './random.js';
 
 const modal = document.querySelector('.big-picture');
 const modalClose = document.querySelector('#picture-cancel');
@@ -27,14 +26,13 @@ const openModal = (photo) => {
   modal.querySelector('.social__caption').textContent = photo.description;
 
   const fragment = document.createDocumentFragment();
-
-  for(let i = 0; i < photo.comments.length - 1; i++) {
+  for(let i = 0; i < photo.comments.length; i++) {
     const commentElement = document.createElement('li');
     commentElement.classList.add('social__comment');
     commentElement.innerHTML = '<img class="social__picture" src="" alt="" width="35" height="35"><p class="social__text"></p>';
-    commentElement.querySelector('.social__picture').src = 'img/avatar-' + getRandomIntegerNumber(1,6) + '.svg';
-    commentElement.querySelector('.social__picture').alt = 'Аватар комментатора фотографии';
-    commentElement.querySelector('.social__text').textContent = 'Содержимое комментария';
+    commentElement.querySelector('.social__picture').src = photo.comments[i].avatar;
+    commentElement.querySelector('.social__picture').alt = photo.comments[i].name;
+    commentElement.querySelector('.social__text').textContent = photo.comments[i].message;
     fragment.appendChild(commentElement);
   }
   comments.appendChild(fragment);
@@ -44,22 +42,25 @@ const closeModal = () => {
   modal.classList.add('hidden');
   body.classList.remove('modal-open');
   document.removeEventListener('keydown', onModalEscPress);
+  comments.innerHTML = '';
 }
 
-modalClose.addEventListener('keydown', (evt) => {
-  if(isEnterEvent(evt)) {
-    openModal();
-  }
-});
+const createModal = () => {
+  modalClose.addEventListener('keydown', (evt) => {
+    if(isEnterEvent(evt)) {
+      openModal();
+    }
+  });
 
-modalClose.addEventListener('click', () => {
-  closeModal();
-})
-
-modal.addEventListener('keydown', (evt) => {
-  if(isEnterEvent(evt)) {
+  modalClose.addEventListener('click', () => {
     closeModal();
-  }
-});
+  })
 
-export { openModal }
+  modal.addEventListener('keydown', (evt) => {
+    if(isEnterEvent(evt)) {
+      closeModal();
+    }
+  });
+}
+
+export { openModal, createModal };
