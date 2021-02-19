@@ -1,9 +1,17 @@
+import { openModal } from './modal.js';
+
 const picturesContainer = document.querySelector('.pictures');
 const photoUserTemplate = document.querySelector('#picture')
   .content
   .querySelector('.picture');
 
 const listFragment = document.createDocumentFragment();
+
+const onButtonClick = (photo) => {
+  return () => {
+    openModal(photo);
+  }
+}
 
 const renderPictures = (picture) => {
   picture.forEach((photo) => {
@@ -12,6 +20,7 @@ const renderPictures = (picture) => {
     photoUser.querySelector('.picture__likes').textContent = photo.likes;
     photoUser.querySelector('.picture__comments').textContent = photo.comments.length;
     listFragment.appendChild(photoUser);
+    photoUser.addEventListener('click', onButtonClick(photo));
   })
   picturesContainer.appendChild(listFragment);
 }
