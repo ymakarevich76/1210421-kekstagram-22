@@ -18,6 +18,7 @@ const openModal = (photo) => {
   document.addEventListener('keydown', onModalEscPress);
   body.classList.add('modal-open');
   modal.classList.remove('hidden');
+
   commentCount.classList.add('hidden');
   commentLoader.classList.add('hidden');
   modal.querySelector('.big-picture__img img').src = photo.url;
@@ -63,4 +64,4 @@ const createModal = () => {
   });
 }
 
-export { openModal, createModal };
+export { openModal, createModal, closeModal, body, onModalEscPress };
