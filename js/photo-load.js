@@ -1,10 +1,10 @@
-import { body } from './modal.js';
 import { isEscEvent } from './util.js';
 import { imgUploadPreview } from './effects-photo.js';
 
 const uploadOverlay = document.querySelector('.img-upload__overlay');
 const uploadInput = document.querySelector('.img-upload__input');
 const closePhoto = document.querySelector('.img-upload__cancel');
+const body = document.querySelector('body');
 
 const onPhotoEscPress = (evt) => {
   if(isEscEvent(evt)) {

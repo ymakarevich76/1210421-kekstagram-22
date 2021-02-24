@@ -64,4 +64,4 @@ const createModal = () => {
   });
 }
 
-export { openModal, createModal, closeModal, body, onModalEscPress };
+export { openModal, createModal, closeModal, onModalEscPress };

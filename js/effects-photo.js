@@ -10,16 +10,14 @@ const effectMarvin = document.querySelector('#effect-marvin');
 const effectPhobos = document.querySelector('#effect-phobos');
 const effectHeat = document.querySelector('#effect-heat');
 
-// valueElement.value = 10;
-
-const createSlider = (filter, min, max, start, step) => {
+const createSlider = (params) => {
   noUiSlider.create(sliderElement, {
     range: {
-      min: min,
-      max: max,
+      min: params.min,
+      max: params.max,
     },
-    start: start,
-    step: step,
+    start: params.start,
+    step: params.step,
     connect: 'lower',
     format: {
       to: function (value) {
@@ -38,21 +36,24 @@ const createSlider = (filter, min, max, start, step) => {
     valueElement.value = values[handle];
     valueElement.setAttribute('value', values[handle]);
 
-    if (filter === 'grayscale') {
-      imgUploadPreview.style.filter = `grayscale(${valueElement.value})`;
-      effectChrome.value = valueElement.value;
-    } else if (filter === 'sepia') {
-      effectSepia.value = valueElement.value;
-      imgUploadPreview.style.filter = `sepia(${valueElement.value})`;
-    } else if (filter === 'invert') {
-      effectMarvin.value = valueElement.value;
-      imgUploadPreview.style.filter = `invert(${valueElement.value}%)`;
-    } else if (filter === 'blur') {
-      effectPhobos.value = valueElement.value;
-      imgUploadPreview.style.filter = `blur(${valueElement.value}px)`;
-    } else if (filter === 'brightness') {
-      effectHeat.value = valueElement.value;
-      imgUploadPreview.style.filter = `brightness(${valueElement.value})`;
+    switch (params.filter) {
+      case 'grayscale':
+        effectChrome.value = valueElement.value;
+        return imgUploadPreview.style.filter = `grayscale(${valueElement.value})`;
+      case 'sepia':
+        effectSepia.value = valueElement.value;
+        return imgUploadPreview.style.filter = `sepia(${valueElement.value})`;
+      case 'invert':
+        effectMarvin.value = valueElement.value;
+        return imgUploadPreview.style.filter = `invert(${valueElement.value}%)`;
+      case 'blur':
+        effectPhobos.value = valueElement.value;
+        return imgUploadPreview.style.filter = `blur(${valueElement.value}px)`;
+      case 'brightness':
+        effectHeat.value = valueElement.value;
+        return imgUploadPreview.style.filter = `brightness(${valueElement.value})`;
+      default:
+        return 'Непонятно!';
     }
   });
 }
@@ -63,51 +64,78 @@ const createEffectsPhoto = () => {
     if(evt.target.checked) {
       sliderElement.noUiSlider.destroy();
       imgUploadPreview.removeAttribute('style');
+      valueElement.setAttribute('value', '');
     }
   });
 
+  const checkSlider = () => {
+    if (sliderElement.classList.contains('noUi-target')) {
+      sliderElement.noUiSlider.destroy();
+    }
+  }
+
   effectChrome.addEventListener('change', (evt) => {
     if (evt.target.checked) {
-      if (sliderElement.classList.contains('noUi-target')) {
-        sliderElement.noUiSlider.destroy();
-      }
-      createSlider('grayscale', 0, 1, 1, 0.1);
+      checkSlider();
+      createSlider({
+        filter:'grayscale',
+        min: 0,
+        max: 1,
+        start: 1,
+        step: 0.1,
+      });
     }
   });
 
   effectSepia.addEventListener('change', (evt) => {
     if (evt.target.checked) {
-      if (sliderElement.classList.contains('noUi-target')) {
-        sliderElement.noUiSlider.destroy();
-      }
-      createSlider('sepia', 0, 1, 1, 0.1);
+      checkSlider();
+      createSlider({
+        filter:'sepia',
+        min: 0,
+        max: 1,
+        start: 1,
+        step: 0.1,
+      });
     }
   });
 
   effectMarvin.addEventListener('change', (evt) => {
     if (evt.target.checked) {
-      if (sliderElement.classList.contains('noUi-target')) {
-        sliderElement.noUiSlider.destroy();
-      }
-      createSlider('invert', 0, 100, 100, 1);
+      checkSlider();
+      createSlider({
+        filter:'invert',
+        min: 0,
+        max: 100,
+        start: 100,
+        step: 1,
+      });
     }
   });
 
   effectPhobos.addEventListener('change', (evt) => {
     if (evt.target.checked) {
-      if (sliderElement.classList.contains('noUi-target')) {
-        sliderElement.noUiSlider.destroy();
-      }
-      createSlider('blur', 0, 3, 3, 0.1);
+      checkSlider();
+      createSlider({
+        filter:'blur',
+        min: 0,
+        max: 3,
+        start: 3,
+        step: 0.1,
+      });
     }
   });
 
   effectHeat.addEventListener('change', (evt) => {
     if (evt.target.checked) {
-      if (sliderElement.classList.contains('noUi-target')) {
-        sliderElement.noUiSlider.destroy();
-      }
-      createSlider('brightness', 1, 3, 3, 0.1);
+      checkSlider();
+      createSlider({
+        filter:'brightness',
+        min: 1,
+        max: 3,
+        start: 3,
+        step: 0.1,
+      });
     }
   });
 }
