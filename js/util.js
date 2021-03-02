@@ -5,4 +5,16 @@ const isEnterEvent = (evt) => {
   return evt.key === 'Enter';
 }
 
-export { isEscEvent, isEnterEvent };
+const isAllElementsUniq = (array) => {
+  const arrayLowerCase = array.map((element) => {
+    return element.toLowerCase();
+  })
+  const unique = new Set(arrayLowerCase);
+  return array.length === Array.from(unique).length;
+}
+
+export {
+  isEscEvent,
+  isEnterEvent,
+  isAllElementsUniq
+};
