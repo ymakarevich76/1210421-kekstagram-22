@@ -1,4 +1,7 @@
-import { isEscEvent, isEnterEvent } from './util.js';
+import {
+  isEscEvent,
+  isEnterEvent
+} from './util.js';
 
 const modal = document.querySelector('.big-picture');
 const modalClose = document.querySelector('#picture-cancel');
@@ -7,8 +10,9 @@ const commentLoader = document.querySelector('.comments-loader');
 const body = document.querySelector('body');
 const comments = document.querySelector('.social__comments');
 
+
 const onModalEscPress = (evt) => {
-  if(isEscEvent(evt)) {
+  if (isEscEvent(evt)) {
     evt.preventDefault();
     closeModal();
   }
@@ -27,7 +31,7 @@ const openModal = (photo) => {
   modal.querySelector('.social__caption').textContent = photo.description;
 
   const fragment = document.createDocumentFragment();
-  for(let i = 0; i < photo.comments.length; i++) {
+  for (let i = 0; i < photo.comments.length; i++) {
     const commentElement = document.createElement('li');
     commentElement.classList.add('social__comment');
     commentElement.innerHTML = '<img class="social__picture" src="" alt="" width="35" height="35"><p class="social__text"></p>';
@@ -48,7 +52,7 @@ const closeModal = () => {
 
 const createModal = () => {
   modalClose.addEventListener('keydown', (evt) => {
-    if(isEnterEvent(evt)) {
+    if (isEnterEvent(evt)) {
       openModal();
     }
   });
@@ -58,10 +62,15 @@ const createModal = () => {
   })
 
   modal.addEventListener('keydown', (evt) => {
-    if(isEnterEvent(evt)) {
+    if (isEnterEvent(evt)) {
       closeModal();
     }
   });
 }
 
-export { openModal, createModal, closeModal, onModalEscPress };
+export {
+  openModal,
+  createModal,
+  closeModal,
+  onModalEscPress
+};
