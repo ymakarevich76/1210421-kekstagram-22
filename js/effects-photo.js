@@ -1,7 +1,5 @@
 /* global noUiSlider:readonly */
-import {
-  imgUploadPreview
-} from './scale-control.js';
+const imgUploadPreview = document.querySelector('.img-upload__preview img');
 
 const sliderElement = document.querySelector('.effect-level__slider');
 const valueElement = document.querySelector('.effect-level__value');
@@ -54,6 +52,7 @@ const createSlider = (params) => {
 }
 
 const checkSlider = () => {
+  imgUploadPreview.removeAttribute('class');
   if (sliderElement.classList.contains('noUi-target')) {
     sliderElement.noUiSlider.reset();
     sliderElement.noUiSlider.destroy();
@@ -77,7 +76,6 @@ const createEffectsPhoto = () => {
 
   effectChrome.addEventListener('change', (evt) => {
     if (evt.target.checked) {
-
       checkSlider();
       createSlider({
         filter: 'grayscale',
@@ -86,6 +84,7 @@ const createEffectsPhoto = () => {
         start: 1,
         step: 0.1,
       });
+      imgUploadPreview.classList.add('effects__preview--chrome');
     }
   });
 
@@ -99,6 +98,7 @@ const createEffectsPhoto = () => {
         start: 1,
         step: 0.1,
       });
+      imgUploadPreview.classList.add('effects__preview--sepia');
     }
   });
 
@@ -112,6 +112,7 @@ const createEffectsPhoto = () => {
         start: 100,
         step: 1,
       });
+      imgUploadPreview.classList.add('effects__preview--marvin');
     }
   });
 
@@ -125,6 +126,7 @@ const createEffectsPhoto = () => {
         start: 3,
         step: 0.1,
       });
+      imgUploadPreview.classList.add('effects__preview--phobos');
     }
   });
 
@@ -138,6 +140,7 @@ const createEffectsPhoto = () => {
         start: 3,
         step: 0.1,
       });
+      imgUploadPreview.classList.add('effects__preview--heat');
     }
   });
 }
