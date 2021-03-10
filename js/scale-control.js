@@ -1,3 +1,4 @@
+const imgUploadPreview = document.querySelector('.img-upload__preview img');
 let inputValueHidden = document.querySelector('.scale__control--hidden');
 
 function toScaleFunc(count) {
