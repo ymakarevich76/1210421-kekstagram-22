@@ -10,10 +10,11 @@ const MAX_NAME_LENGHT = 20;
 const MIN_NAME_LENGTH = 2;
 const MAX_TEXT_LENGTH = 140;
 
+
 const textHashtags = document.querySelector('.text__hashtags');
 const textDescription = document.querySelector('.text__description');
 
-const onValidationInput = () => {
+const onValidationForm = () => {
 
   textHashtags.addEventListener('input', () => {
     const arrayHashtags = textHashtags.value.split(' ');
@@ -81,5 +82,5 @@ const onValidationInput = () => {
 }
 
 export {
-  onValidationInput
+  onValidationForm
 };

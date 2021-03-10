@@ -2,14 +2,14 @@ import {
   getRandomIntegerNumber
 } from './random.js';
 import {
-  photoUsers,
   generatePhotoData
 } from './data.js';
 import {
   renderPictures
 } from './picture.js';
 import {
-  createModal
+  createCloseModal,
+  closeModal
 } from './modal.js';
 import {
   photoLoad
@@ -21,16 +21,33 @@ import {
   createEffectsPhoto
 } from './effects-photo.js';
 import {
-  onValidationInput
-} from './validation-input.js';
-
+  onValidationForm
+} from './validation-form.js';
+import {
+  photoFormSubmit
+} from './form-submit.js';
+import {
+  getData
+} from './api.js';
+import {
+  showAlert
+} from './util.js';
 
 getRandomIntegerNumber(1, 10);
 generatePhotoData(25, 1, 10);
-renderPictures(photoUsers);
-createModal();
+createCloseModal();
 photoLoad();
 const counts = document.querySelectorAll('.img-upload__scale');
 counts.forEach(toScaleFunc);
 createEffectsPhoto();
-onValidationInput();
+onValidationForm();
+
+const COUNT_PICTURES = 25;
+getData(
+  (pictures) => {
+    renderPictures(pictures.slice(0, COUNT_PICTURES));
+  },
+  () => showAlert('Не удалось загрузить фотографии. Попробуйте еще раз'),
+);
+
+photoFormSubmit(closeModal);
