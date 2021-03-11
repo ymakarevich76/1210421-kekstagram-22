@@ -9,7 +9,7 @@ function toScaleFunc(count) {
 
   field.value = 100 + '%';
 
-  btnMinus.addEventListener('click', function() {
+  btnMinus.addEventListener('click', function () {
     if (fieldValue > 25) {
       fieldValue = fieldValue - 25;
       field.value = fieldValue + '%';
@@ -18,7 +18,7 @@ function toScaleFunc(count) {
     }
   });
 
-  btnPlus.addEventListener('click', function() {
+  btnPlus.addEventListener('click', function () {
     if (fieldValue < 100) {
       fieldValue = fieldValue + 25;
       field.value = fieldValue + '%';
@@ -28,4 +28,6 @@ function toScaleFunc(count) {
   });
 }
 
-export { toScaleFunc, imgUploadPreview };
+export {
+  toScaleFunc
+};

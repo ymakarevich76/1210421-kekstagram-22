@@ -11,6 +11,13 @@ const body = document.querySelector('body');
 const comments = document.querySelector('.social__comments');
 
 
+const closeModal = () => {
+  modal.classList.add('hidden');
+  body.classList.remove('modal-open');
+  document.removeEventListener('keydown', onModalEscPress);
+  comments.innerHTML = '';
+}
+
 const onModalEscPress = (evt) => {
   if (isEscEvent(evt)) {
     evt.preventDefault();
@@ -43,14 +50,7 @@ const openModal = (photo) => {
   comments.appendChild(fragment);
 }
 
-const closeModal = () => {
-  modal.classList.add('hidden');
-  body.classList.remove('modal-open');
-  document.removeEventListener('keydown', onModalEscPress);
-  comments.innerHTML = '';
-}
-
-const createModal = () => {
+const createCloseModal = () => {
   modalClose.addEventListener('keydown', (evt) => {
     if (isEnterEvent(evt)) {
       openModal();
@@ -59,7 +59,11 @@ const createModal = () => {
 
   modalClose.addEventListener('click', () => {
     closeModal();
-  })
+  });
+
+  modal.addEventListener('click', () => {
+    closeModal();
+  });
 
   modal.addEventListener('keydown', (evt) => {
     if (isEnterEvent(evt)) {
@@ -70,7 +74,7 @@ const createModal = () => {
 
 export {
   openModal,
-  createModal,
+  createCloseModal,
   closeModal,
   onModalEscPress
 };
