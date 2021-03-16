@@ -2,8 +2,7 @@ import {
   getRandomIntegerNumber
 } from './random.js';
 import {
-  generatePhotoData,
-  photoUsers
+  generatePhotoData
 } from './data.js';
 import {
   // newArrayPhoto,
@@ -35,9 +34,7 @@ import {
   showAlert
 } from './util.js';
 import {
-  // setClickFilterDiscussed
-  // sortPhotos
-  // setClickFilterRandom
+  filterRenderPhotoByClick
 } from './img-filter.js'
 
 getRandomIntegerNumber(1, 10);
@@ -48,6 +45,7 @@ const counts = document.querySelectorAll('.img-upload__scale');
 counts.forEach(toScaleFunc);
 createEffectsPhoto();
 onValidationForm();
+filterRenderPhotoByClick();
 
 const imgFilters = document.querySelector('.img-filters');
 let arrPictures = [];
@@ -56,6 +54,7 @@ getData(
     arrPictures = pictures;
     renderPictures(pictures);
     imgFilters.classList.remove('img-filters--inactive');
+
   },
   () => showAlert('Не удалось загрузить фотографии. Попробуйте еще раз'),
 );

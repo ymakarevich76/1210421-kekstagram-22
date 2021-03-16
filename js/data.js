@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import {
   getRandomIntegerNumber
 } from './random.js';
@@ -24,8 +25,8 @@ const generateCommentsData = (count) => {
     let g = i;
     g++;
     commentsData[i].id = g;
-    commentsData[i].avatar = 'img/avatar-' + getRandomIntegerNumber(1, 6) + '.svg',
-      commentsData[i].message = messages[getRandomIntegerNumber(0, messages.length - 1)];
+    commentsData[i].avatar = 'img/avatar-' + getRandomIntegerNumber(1, 6) + '.svg';
+    commentsData[i].message = messages[getRandomIntegerNumber(0, messages.length - 1)];
     commentsData[i].name = names[getRandomIntegerNumber(0, names.length - 1)];
   }
   return commentsData;

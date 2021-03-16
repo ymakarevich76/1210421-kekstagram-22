@@ -19,34 +19,50 @@ const sortPhotos = (a, b) => {
   return b.likes - a.likes;
 }
 
-const randomSort = (a, b) => {
+const testFunc = () => {
+  const getUniqArray = Array.from(new Set(arrPictures)).sort(randomSort);
+  renderPictures(getUniqArray);
+}
+const debouncePrint = _.debounce(
+  () => testFunc(),
+  RERENDER_DELAY, {
+    'leading': true,
+    'trailing': false,
+  },
+);
+
+const randomSort = () => {
   return getRandomIntegerNumber(0, 2) - 1
 }
 
-filterDiscusse.addEventListener('click', (evt) => {
-  const arrFiltered = arrPictures.slice().sort(sortPhotos);
-  renderPictures(arrFiltered);
+const filterRenderPhotoByClick = () => {
 
-  filterDiscusse.classList.add('img-filters__button--active');
-  filterDefault.classList.remove('img-filters__button--active');
-  filterRandom.classList.remove('img-filters__button--active');
-})
+  filterDefault.addEventListener('click', () => {
+    renderPictures(arrPictures);
 
-filterRandom.addEventListener('click', () => {
-  const getUniqArray = Array.from(new Set(arrPictures)).sort(randomSort);
-  renderPictures(getUniqArray);
+    filterDiscusse.classList.remove('img-filters__button--active');
+    filterDefault.classList.add('img-filters__button--active');
+    filterRandom.classList.remove('img-filters__button--active');
+  })
 
-  filterDiscusse.classList.remove('img-filters__button--active');
-  filterDefault.classList.remove('img-filters__button--active');
-  filterRandom.classList.add('img-filters__button--active');
-})
+  filterDiscusse.addEventListener('click', () => {
+    const arrFiltered = arrPictures.slice().sort(sortPhotos);
+    renderPictures(arrFiltered);
 
-filterDefault.addEventListener('click', () => {
-  renderPictures(arrPictures);
+    filterDiscusse.classList.add('img-filters__button--active');
+    filterDefault.classList.remove('img-filters__button--active');
+    filterRandom.classList.remove('img-filters__button--active');
+  })
 
-  filterDiscusse.classList.remove('img-filters__button--active');
-  filterDefault.classList.add('img-filters__button--active');
-  filterRandom.classList.remove('img-filters__button--active');
-})
+  filterRandom.addEventListener('click', () => {
+    debouncePrint()
 
-export {}
+    filterDiscusse.classList.remove('img-filters__button--active');
+    filterDefault.classList.remove('img-filters__button--active');
+    filterRandom.classList.add('img-filters__button--active');
+  })
+}
+
+export {
+  filterRenderPhotoByClick
+}
