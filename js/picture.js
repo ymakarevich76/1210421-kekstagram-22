@@ -1,4 +1,10 @@
-import { openModal } from './modal.js';
+import {
+  openModal
+} from './modal.js';
+
+import {
+  clearPicturesContainer
+} from './clear-pictures-container.js'
 
 const picturesContainer = document.querySelector('.pictures');
 const photoUserTemplate = document.querySelector('#picture')
@@ -22,7 +28,10 @@ const renderPictures = (picture) => {
     listFragment.appendChild(photoUser);
     photoUser.addEventListener('click', onButtonClick(photo));
   })
+  clearPicturesContainer();
   picturesContainer.appendChild(listFragment);
 }
 
-export { renderPictures };
+export {
+  renderPictures
+};

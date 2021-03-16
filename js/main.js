@@ -2,9 +2,11 @@ import {
   getRandomIntegerNumber
 } from './random.js';
 import {
-  generatePhotoData
+  generatePhotoData,
+  photoUsers
 } from './data.js';
 import {
+  // newArrayPhoto,
   renderPictures
 } from './picture.js';
 import {
@@ -32,6 +34,11 @@ import {
 import {
   showAlert
 } from './util.js';
+import {
+  // setClickFilterDiscussed
+  // sortPhotos
+  // setClickFilterRandom
+} from './img-filter.js'
 
 getRandomIntegerNumber(1, 10);
 generatePhotoData(25, 1, 10);
@@ -42,12 +49,17 @@ counts.forEach(toScaleFunc);
 createEffectsPhoto();
 onValidationForm();
 
-const COUNT_PICTURES = 25;
+const imgFilters = document.querySelector('.img-filters');
+let arrPictures = [];
 getData(
   (pictures) => {
-    renderPictures(pictures.slice(0, COUNT_PICTURES));
+    arrPictures = pictures;
+    renderPictures(pictures);
+    imgFilters.classList.remove('img-filters--inactive');
   },
   () => showAlert('Не удалось загрузить фотографии. Попробуйте еще раз'),
 );
-
 photoFormSubmit(closeModal);
+export {
+  arrPictures
+}

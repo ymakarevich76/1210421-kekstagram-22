@@ -1,4 +1,6 @@
-import { getRandomIntegerNumber } from './random.js';
+import {
+  getRandomIntegerNumber
+} from './random.js';
 
 const messages = [
   'Всё отлично!',
@@ -17,13 +19,13 @@ const names = [
 
 const generateCommentsData = (count) => {
   const commentsData = [];
-  for(let i = 0; i < count; i++) {
+  for (let i = 0; i < count; i++) {
     commentsData[i] = {};
     let g = i;
     g++;
     commentsData[i].id = g;
-    commentsData[i].avatar = 'img/avatar-' + getRandomIntegerNumber(1,6) + '.svg',
-    commentsData[i].message = messages[getRandomIntegerNumber(0, messages.length - 1)];
+    commentsData[i].avatar = 'img/avatar-' + getRandomIntegerNumber(1, 6) + '.svg',
+      commentsData[i].message = messages[getRandomIntegerNumber(0, messages.length - 1)];
     commentsData[i].name = names[getRandomIntegerNumber(0, names.length - 1)];
   }
   return commentsData;
@@ -40,19 +42,24 @@ const getComments = (commentsArr, minNumbersComments, maxNumbersComments) => {
 
 const generatePhotoData = (photoCount, minNumbersComments, maxNumbersComments) => {
   const photoData = [];
-  for(let i = 0; i < photoCount; i++) {
+  for (let i = 0; i < photoCount; i++) {
     photoData[i] = {};
     let j = i;
     j++;
     photoData[i].id = j;
     photoData[i].url = `photos/${j}.jpg`;
     photoData[i].description = `${j} описание фотографии`;
-    photoData[i].likes = getRandomIntegerNumber(15,200);
+    photoData[i].likes = getRandomIntegerNumber(15, 200);
     photoData[i].comments = getComments(generateCommentsData(25), minNumbersComments, maxNumbersComments);
   }
   return photoData;
 }
 
-const photoUsers = generatePhotoData(25, 5, 10);
+let photoUsers = generatePhotoData(25, 5, 10);
 
-export { photoUsers, generatePhotoData, generateCommentsData };
+export {
+  photoUsers,
+  generatePhotoData,
+  generateCommentsData,
+  getComments
+};
