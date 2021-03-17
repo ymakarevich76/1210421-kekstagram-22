@@ -19,26 +19,35 @@ const sortPhotos = (a, b) => {
   return b.likes - a.likes;
 }
 
-const testFunc = () => {
-  const getUniqArray = Array.from(new Set(arrPictures)).sort(randomSort);
-  renderPictures(getUniqArray);
-}
-const debouncePrint = _.debounce(
-  () => testFunc(),
-  RERENDER_DELAY, {
-    'leading': true,
-    'trailing': false,
-  },
-);
-
 const randomSort = () => {
   return getRandomIntegerNumber(0, 2) - 1
 }
 
-const filterRenderPhotoByClick = () => {
+const sortArrayRandom = () => {
+  const getUniqArray = Array.from(new Set(arrPictures)).sort(randomSort);
+  renderPictures(getUniqArray);
+}
 
+const filterDefaultOnClick = () => {
+  renderPictures(arrPictures);
+}
+
+const filterDiscusseOnClick = () => {
+  const arrFiltered = arrPictures.slice().sort(sortPhotos);
+  renderPictures(arrFiltered);
+}
+
+const filterRandomOnClick = () => {
+  sortArrayRandom();
+}
+
+const debounceFilterDefaultOnClick = _.debounce(filterDefaultOnClick, RERENDER_DELAY);
+const debounceFilterDiscusseOnClick = _.debounce(filterDiscusseOnClick, RERENDER_DELAY);
+const debounceFilterRandomOnClick = _.debounce(filterRandomOnClick, RERENDER_DELAY);
+
+const filterRenderPhotoByClick = () => {
   filterDefault.addEventListener('click', () => {
-    renderPictures(arrPictures);
+    debounceFilterDefaultOnClick();
 
     filterDiscusse.classList.remove('img-filters__button--active');
     filterDefault.classList.add('img-filters__button--active');
@@ -46,8 +55,7 @@ const filterRenderPhotoByClick = () => {
   })
 
   filterDiscusse.addEventListener('click', () => {
-    const arrFiltered = arrPictures.slice().sort(sortPhotos);
-    renderPictures(arrFiltered);
+    debounceFilterDiscusseOnClick();
 
     filterDiscusse.classList.add('img-filters__button--active');
     filterDefault.classList.remove('img-filters__button--active');
@@ -55,7 +63,7 @@ const filterRenderPhotoByClick = () => {
   })
 
   filterRandom.addEventListener('click', () => {
-    debouncePrint()
+    debounceFilterRandomOnClick();
 
     filterDiscusse.classList.remove('img-filters__button--active');
     filterDefault.classList.remove('img-filters__button--active');

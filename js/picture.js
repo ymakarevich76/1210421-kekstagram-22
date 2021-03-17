@@ -2,10 +2,6 @@ import {
   openModal
 } from './modal.js';
 
-import {
-  clearPicturesContainer
-} from './clear-pictures-container.js'
-
 const picturesContainer = document.querySelector('.pictures');
 const photoUserTemplate = document.querySelector('#picture')
   .content
@@ -17,6 +13,14 @@ const onButtonClick = (photo) => {
   return () => {
     openModal(photo);
   }
+}
+
+const clearPicturesContainer = () => {
+  listFragment.innerHTML = '';
+  const pictures = picturesContainer.querySelectorAll('.picture');
+  pictures.forEach((picture) => {
+    picture.remove();
+  });
 }
 
 const renderPictures = (picture) => {

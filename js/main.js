@@ -1,11 +1,4 @@
 import {
-  getRandomIntegerNumber
-} from './random.js';
-import {
-  generatePhotoData
-} from './data.js';
-import {
-  // newArrayPhoto,
   renderPictures
 } from './picture.js';
 import {
@@ -37,8 +30,6 @@ import {
   filterRenderPhotoByClick
 } from './img-filter.js'
 
-getRandomIntegerNumber(1, 10);
-generatePhotoData(25, 1, 10);
 createCloseModal();
 photoLoad();
 const counts = document.querySelectorAll('.img-upload__scale');
