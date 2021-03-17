@@ -9,7 +9,6 @@ const getData = (onSuccess, onError) => {
       onError();
     });
 };
-
 const sendData = (onSuccess, showAlertError, body) => {
   fetch(
       'https://22.javascript.pages.academy/kekstagram', {

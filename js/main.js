@@ -1,10 +1,4 @@
 import {
-  getRandomIntegerNumber
-} from './random.js';
-import {
-  generatePhotoData
-} from './data.js';
-import {
   renderPictures
 } from './picture.js';
 import {
@@ -32,22 +26,30 @@ import {
 import {
   showAlert
 } from './util.js';
+import {
+  filterRenderPhotoByClick
+} from './img-filter.js'
 
-getRandomIntegerNumber(1, 10);
-generatePhotoData(25, 1, 10);
 createCloseModal();
 photoLoad();
 const counts = document.querySelectorAll('.img-upload__scale');
 counts.forEach(toScaleFunc);
 createEffectsPhoto();
 onValidationForm();
+filterRenderPhotoByClick();
 
-const COUNT_PICTURES = 25;
+const imgFilters = document.querySelector('.img-filters');
+let arrPictures = [];
 getData(
   (pictures) => {
-    renderPictures(pictures.slice(0, COUNT_PICTURES));
+    arrPictures = pictures;
+    renderPictures(pictures);
+    imgFilters.classList.remove('img-filters--inactive');
+
   },
   () => showAlert('Не удалось загрузить фотографии. Попробуйте еще раз'),
 );
-
 photoFormSubmit(closeModal);
+export {
+  arrPictures
+}

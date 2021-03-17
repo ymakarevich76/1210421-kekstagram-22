@@ -1,4 +1,6 @@
-import { openModal } from './modal.js';
+import {
+  openModal
+} from './modal.js';
 
 const picturesContainer = document.querySelector('.pictures');
 const photoUserTemplate = document.querySelector('#picture')
@@ -13,6 +15,14 @@ const onButtonClick = (photo) => {
   }
 }
 
+const clearPicturesContainer = () => {
+  listFragment.innerHTML = '';
+  const pictures = picturesContainer.querySelectorAll('.picture');
+  pictures.forEach((picture) => {
+    picture.remove();
+  });
+}
+
 const renderPictures = (picture) => {
   picture.forEach((photo) => {
     const photoUser = photoUserTemplate.cloneNode(true);
@@ -22,7 +32,10 @@ const renderPictures = (picture) => {
     listFragment.appendChild(photoUser);
     photoUser.addEventListener('click', onButtonClick(photo));
   })
+  clearPicturesContainer();
   picturesContainer.appendChild(listFragment);
 }
 
-export { renderPictures };
+export {
+  renderPictures
+};
