@@ -45,7 +45,6 @@ getData(
     arrPictures = pictures;
     renderPictures(pictures);
     imgFilters.classList.remove('img-filters--inactive');
-    console.log(arrPictures);
   },
   () => showAlert('Не удалось загрузить фотографии. Попробуйте еще раз'),
 );

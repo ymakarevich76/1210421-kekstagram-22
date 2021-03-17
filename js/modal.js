@@ -18,7 +18,7 @@ const closeModal = () => {
   body.classList.remove('modal-open');
   document.removeEventListener('keydown', onModalEscPress);
   commentsBlock.innerHTML = '';
-  const COUNT = 5;
+  count = 5;
   commentLoader.classList.remove('hidden');
   commentLoader.removeEventListener('click', loadMore);
 }
