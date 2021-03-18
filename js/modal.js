@@ -6,7 +6,7 @@ import {
 const DEFAULT_COUNT_COMMENTS = 5;
 const STEP_COUNT_COMMENTS = 5;
 let count = DEFAULT_COUNT_COMMENTS;
-let photo = [];
+let photos = [];
 
 const modal = document.querySelector('.big-picture');
 const modalInside = document.querySelector('.big-picture__preview');
@@ -67,22 +67,22 @@ const renderComments = (commentsLength, comments) => {
 
 const loadMore = () => {
   count += STEP_COUNT_COMMENTS;
-  checkCommentsLength(photo.comments);
+  checkCommentsLength(photos.comments);
 }
 
 const openModal = (photoData) => {
-  photo = photoData;
+  photos = photoData;
   document.addEventListener('keydown', onModalEscPress);
   body.classList.add('modal-open');
   modal.classList.remove('hidden');
 
   commentCount.classList.add('hidden');
-  modal.querySelector('.big-picture__img img').src = photo.url;
-  modal.querySelector('.likes-count').textContent = photo.likes;
-  modal.querySelector('.comments-count').textContent = photo.comments.length;
-  modal.querySelector('.social__caption').textContent = photo.description;
+  modal.querySelector('.big-picture__img img').src = photos.url;
+  modal.querySelector('.likes-count').textContent = photos.likes;
+  modal.querySelector('.comments-count').textContent = photos.comments.length;
+  modal.querySelector('.social__caption').textContent = photos.description;
 
-  checkCommentsLength(photo.comments);
+  checkCommentsLength(photos.comments);
   commentLoader.addEventListener('click', loadMore);
 }
 
