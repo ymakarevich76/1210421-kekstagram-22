@@ -3,7 +3,10 @@ import {
   isEnterEvent
 } from './util.js';
 
-let count = 5;
+const DEFAULT_COUNT_COMMENTS = 5;
+const STEP_COUNT_COMMENTS = 5;
+let count = DEFAULT_COUNT_COMMENTS;
+let photo = [];
 
 const modal = document.querySelector('.big-picture');
 const modalInside = document.querySelector('.big-picture__preview');
@@ -13,14 +16,20 @@ const commentLoader = document.querySelector('.comments-loader');
 const body = document.querySelector('body');
 const commentsBlock = document.querySelector('.social__comments');
 
+const fragment = document.createDocumentFragment();
+
+const clearComments = () => {
+  commentsBlock.innerHTML = '';
+  count = DEFAULT_COUNT_COMMENTS;
+  commentLoader.classList.remove('hidden');
+  commentLoader.removeEventListener('click', loadMore);
+}
+
 const closeModal = () => {
   modal.classList.add('hidden');
   body.classList.remove('modal-open');
   document.removeEventListener('keydown', onModalEscPress);
-  commentsBlock.innerHTML = '';
-  count = 5;
-  commentLoader.classList.remove('hidden');
-  commentLoader.removeEventListener('click', loadMore);
+  clearComments();
 }
 
 const onModalEscPress = (evt) => {
@@ -31,19 +40,16 @@ const onModalEscPress = (evt) => {
 }
 
 const checkCommentsLength = (comments) => {
-  if (comments.length <= 5) {
+  if (comments.length <= STEP_COUNT_COMMENTS) {
     renderComments(comments.length, comments);
     commentLoader.classList.add('hidden');
-  } else if (comments.length > 5 && count < comments.length) {
+  } else if (comments.length > STEP_COUNT_COMMENTS && count < comments.length) {
     renderComments(count, comments);
   } else if (count >= comments.length) {
     renderComments(comments.length, comments);
     commentLoader.classList.add('hidden');
   }
 }
-let photo = [];
-
-const fragment = document.createDocumentFragment();
 
 const renderComments = (commentsLength, comments) => {
   for (let i = 0; i < commentsLength; i++) {
@@ -58,8 +64,9 @@ const renderComments = (commentsLength, comments) => {
   commentsBlock.innerHTML = '';
   commentsBlock.appendChild(fragment);
 }
+
 const loadMore = () => {
-  count += 5;
+  count += STEP_COUNT_COMMENTS;
   checkCommentsLength(photo.comments);
 }
 
