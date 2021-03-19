@@ -1,7 +1,7 @@
 const imgUploadPreview = document.querySelector('.img-upload__preview img');
 let inputValueHidden = document.querySelector('.scale__control--hidden');
 
-const toScaleFunc = (count) => {
+const toScalePhoto = (count) => {
   const btnPlus = count.querySelector('.scale__control--bigger');
   const btnMinus = count.querySelector('.scale__control--smaller');
   const field = count.querySelector('.scale__control--value');
@@ -29,5 +29,5 @@ const toScaleFunc = (count) => {
 }
 
 export {
-  toScaleFunc
+  toScalePhoto
 };

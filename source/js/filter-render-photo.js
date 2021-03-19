@@ -4,7 +4,7 @@ import {
 } from './random.js';
 import {
   renderPictures
-} from './picture.js';
+} from './render-pictures.js';
 import {
   arrPictures
 } from './main.js';
@@ -45,7 +45,7 @@ const debounceFilterDefaultOnClick = _.debounce(filterDefaultOnClick, RERENDER_D
 const debounceFilterDiscusseOnClick = _.debounce(filterDiscusseOnClick, RERENDER_DELAY);
 const debounceFilterRandomOnClick = _.debounce(filterRandomOnClick, RERENDER_DELAY);
 
-const filterRenderPhotoByClick = () => {
+const filterRenderPhoto = () => {
   filterDefault.addEventListener('click', () => {
     debounceFilterDefaultOnClick();
 
@@ -72,5 +72,5 @@ const filterRenderPhotoByClick = () => {
 }
 
 export {
-  filterRenderPhotoByClick
+  filterRenderPhoto
 }
