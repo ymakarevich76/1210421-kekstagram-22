@@ -6,7 +6,7 @@ import {
   renderPictures
 } from './render-pictures.js';
 import {
-  arrPictures
+  getArrPic
 } from './main.js';
 
 const RERENDER_DELAY = 500;
@@ -24,16 +24,16 @@ const randomSort = () => {
 }
 
 const sortArrayRandom = () => {
-  const getUniqArray = Array.from(new Set(arrPictures)).sort(randomSort);
+  const getUniqArray = Array.from(new Set(getArrPic())).sort(randomSort);
   renderPictures(getUniqArray);
 }
 
 const filterDefaultOnClick = () => {
-  renderPictures(arrPictures);
+  renderPictures(getArrPic());
 }
 
 const filterDiscusseOnClick = () => {
-  const arrFiltered = arrPictures.slice().sort(sortPhotos);
+  const arrFiltered = getArrPic().slice().sort(sortPhotos);
   renderPictures(arrFiltered);
 }
 

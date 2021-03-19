@@ -52,8 +52,10 @@ getData(
   },
   () => showAlert('Не удалось загрузить фотографии. Попробуйте еще раз'),
 );
-
+const getArrPic = () => {
+  return arrPictures
+}
 photoFormSubmit(closeModal);
 export {
-  arrPictures
+  getArrPic
 }
