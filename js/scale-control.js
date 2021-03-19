@@ -1,7 +1,7 @@
 const imgUploadPreview = document.querySelector('.img-upload__preview img');
 let inputValueHidden = document.querySelector('.scale__control--hidden');
 
-function toScaleFunc(count) {
+const toScaleFunc = (count) => {
   const btnPlus = count.querySelector('.scale__control--bigger');
   const btnMinus = count.querySelector('.scale__control--smaller');
   const field = count.querySelector('.scale__control--value');
@@ -9,7 +9,7 @@ function toScaleFunc(count) {
 
   field.value = 100 + '%';
 
-  btnMinus.addEventListener('click', function () {
+  btnMinus.addEventListener('click', () => {
     if (fieldValue > 25) {
       fieldValue = fieldValue - 25;
       field.value = fieldValue + '%';
@@ -18,7 +18,7 @@ function toScaleFunc(count) {
     }
   });
 
-  btnPlus.addEventListener('click', function () {
+  btnPlus.addEventListener('click', () => {
     if (fieldValue < 100) {
       fieldValue = fieldValue + 25;
       field.value = fieldValue + '%';

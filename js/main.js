@@ -45,10 +45,10 @@ getData(
     arrPictures = pictures;
     renderPictures(pictures);
     imgFilters.classList.remove('img-filters--inactive');
-
   },
   () => showAlert('Не удалось загрузить фотографии. Попробуйте еще раз'),
 );
+
 photoFormSubmit(closeModal);
 export {
   arrPictures
