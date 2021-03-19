@@ -6,8 +6,8 @@ import {
   closeModal
 } from './modal.js';
 import {
-  photoLoad
-} from './photo-load.js';
+  photoLoadModal
+} from './photo-load-modal.js';
 import {
   toScaleFunc
 } from './scale-control.js';
@@ -28,10 +28,14 @@ import {
 } from './util.js';
 import {
   filterRenderPhotoByClick
-} from './img-filter.js'
+} from './img-filter.js';
+import {
+  photoLoad
+} from './photo-load.js';
 
 createCloseModal();
 photoLoad();
+photoLoadModal();
 const counts = document.querySelectorAll('.img-upload__scale');
 counts.forEach(toScaleFunc);
 createEffectsPhoto();
