@@ -2,11 +2,9 @@ import {
   isEscEvent
 } from './util.js';
 import {
-  imgUploadPreview
-} from './effects-photo.js';
-import {
+  imgUploadPreview,
   destroyImgFilter
-} from './effects-photo.js';
+} from './create-effects-photo.js';
 
 const uploadOverlay = document.querySelector('.img-upload__overlay');
 const uploadInput = document.querySelector('.img-upload__input');

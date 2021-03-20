@@ -1,6 +1,6 @@
 import {
   renderPictures
-} from './picture.js';
+} from './render-pictures.js';
 import {
   createCloseModal,
   closeModal
@@ -9,17 +9,17 @@ import {
   photoLoadModal
 } from './photo-load-modal.js';
 import {
-  toScaleFunc
-} from './scale-control.js';
+  toScalePhoto
+} from './to-scale-photo.js';
 import {
   createEffectsPhoto
-} from './effects-photo.js';
+} from './create-effects-photo.js';
 import {
   onValidationForm
-} from './validation-form.js';
+} from './on-validation-form.js';
 import {
   photoFormSubmit
-} from './form-submit.js';
+} from './photo-form-submit.js';
 import {
   getData
 } from './api.js';
@@ -27,8 +27,8 @@ import {
   showAlert
 } from './util.js';
 import {
-  filterRenderPhotoByClick
-} from './img-filter.js';
+  filterRenderPhoto
+} from './filter-render-photo.js';
 import {
   photoLoad
 } from './photo-load.js';
@@ -37,10 +37,10 @@ createCloseModal();
 photoLoad();
 photoLoadModal();
 const counts = document.querySelectorAll('.img-upload__scale');
-counts.forEach(toScaleFunc);
+counts.forEach(toScalePhoto);
 createEffectsPhoto();
 onValidationForm();
-filterRenderPhotoByClick();
+filterRenderPhoto();
 
 const imgFilters = document.querySelector('.img-filters');
 let arrPictures = [];
@@ -52,8 +52,10 @@ getData(
   },
   () => showAlert('Не удалось загрузить фотографии. Попробуйте еще раз'),
 );
-
+const getArrPic = () => {
+  return arrPictures
+}
 photoFormSubmit(closeModal);
 export {
-  arrPictures
+  getArrPic
 }

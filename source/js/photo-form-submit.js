@@ -1,10 +1,10 @@
 import {
-  showAlertError
-} from './error-message.js';
+  showErrorMessage
+} from './show-error-message.js';
 
 import {
-  showAlertSuccess
-} from './success-message.js';
+  showSuccessMessage
+} from './show-success-message.js';
 
 import {
   sendData
@@ -20,8 +20,8 @@ const photoFormSubmit = (onSuccess) => {
     modalPhoto.classList.add('hidden');
 
     sendData(
-      () => showAlertSuccess(onSuccess),
-      () => showAlertError(),
+      () => showSuccessMessage(onSuccess),
+      () => showErrorMessage(),
       new FormData(evt.target),
     );
   });

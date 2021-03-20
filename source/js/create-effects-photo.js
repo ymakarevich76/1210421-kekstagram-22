@@ -149,6 +149,5 @@ const createEffectsPhoto = () => {
 export {
   imgUploadPreview,
   createEffectsPhoto,
-  destroyImgFilter,
-  checkSlider
+  destroyImgFilter
 };

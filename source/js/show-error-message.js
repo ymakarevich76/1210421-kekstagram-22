@@ -4,7 +4,7 @@ import {
 
 import {
   destroyImgFilter
-} from './effects-photo.js'
+} from './create-effects-photo.js'
 
 const errorSection = document.querySelector('#error').content.querySelector('.error');
 const errorButton = document.querySelector('#error').content.querySelector('.error__button');
@@ -17,7 +17,7 @@ const onErrorEscPress = (evt) => {
   }
 }
 
-const showAlertError = () => {
+const showErrorMessage = () => {
   const errorTemplate = document.querySelector('#error').content;
   document.body.appendChild(errorTemplate);
   document.addEventListener('keydown', onErrorEscPress);
@@ -47,5 +47,5 @@ document.addEventListener('keydown', (evt) => {
 });
 
 export {
-  showAlertError
+  showErrorMessage
 }

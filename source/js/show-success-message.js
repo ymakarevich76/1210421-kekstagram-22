@@ -4,7 +4,7 @@ import {
 
 import {
   destroyImgFilter
-} from './effects-photo.js'
+} from './create-effects-photo.js'
 
 const successSection = document.querySelector('#success').content.querySelector('.success');
 const successButton = document.querySelector('#success').content.querySelector('.success__button');
@@ -17,7 +17,7 @@ const onSuccessEscPress = (evt) => {
   }
 }
 
-const showAlertSuccess = () => {
+const showSuccessMessage = () => {
   const successTemplate = document.querySelector('#success').content;
   document.body.appendChild(successTemplate);
   document.addEventListener('keydown', onSuccessEscPress);
@@ -48,5 +48,5 @@ document.addEventListener('keydown', (evt) => {
 });
 
 export {
-  showAlertSuccess
+  showSuccessMessage
 }
