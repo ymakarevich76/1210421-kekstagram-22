@@ -33,6 +33,9 @@ import {
   photoLoad
 } from './photo-load.js';
 
+const imgFilters = document.querySelector('.img-filters');
+let arrPictures = [];
+
 createCloseModal();
 photoLoad();
 photoLoadModal();
@@ -42,8 +45,6 @@ createEffectsPhoto();
 onValidationForm();
 filterRenderPhoto();
 
-const imgFilters = document.querySelector('.img-filters');
-let arrPictures = [];
 getData(
   (pictures) => {
     arrPictures = pictures;

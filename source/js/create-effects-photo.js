@@ -1,6 +1,7 @@
 /* global noUiSlider:readonly */
 const imgUploadPreview = document.querySelector('.img-upload__preview img');
-
+const imgUploadPreviewContainer = document.querySelector('.img-upload__preview-container');
+const sliderWrapper = document.querySelector('.effect-level');
 const sliderElement = document.querySelector('.effect-level__slider');
 const valueElement = document.querySelector('.effect-level__value');
 const effectNone = document.querySelector('#effect-none');
@@ -11,6 +12,7 @@ const effectPhobos = document.querySelector('#effect-phobos');
 const effectHeat = document.querySelector('#effect-heat');
 
 const createSlider = (params) => {
+  imgUploadPreviewContainer.appendChild(sliderWrapper);
   noUiSlider.create(sliderElement, {
     range: {
       min: params.min,
@@ -63,6 +65,9 @@ const destroyImgFilter = () => {
   checkSlider();
   imgUploadPreview.removeAttribute('style');
   sliderElement.classList.remove('noUi-target');
+  if (imgUploadPreviewContainer.contains(sliderWrapper)) {
+    sliderWrapper.remove();
+  }
 }
 
 const createEffectsPhoto = () => {
@@ -84,6 +89,7 @@ const createEffectsPhoto = () => {
         start: 1,
         step: 0.1,
       });
+
       imgUploadPreview.classList.add('effects__preview--chrome');
     }
   });

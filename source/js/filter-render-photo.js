@@ -9,6 +9,7 @@ import {
   getArrPic
 } from './main.js';
 
+const COUNT_PHOTOS = 10;
 const RERENDER_DELAY = 500;
 
 const filterDefault = document.querySelector('#filter-default');
@@ -24,7 +25,7 @@ const randomSort = () => {
 }
 
 const sortArrayRandom = () => {
-  const getUniqArray = Array.from(new Set(getArrPic())).sort(randomSort);
+  const getUniqArray = Array.from(new Set(getArrPic())).slice().sort(randomSort).slice(0, COUNT_PHOTOS);
   renderPictures(getUniqArray);
 }
 
