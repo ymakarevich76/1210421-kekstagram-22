@@ -21,7 +21,7 @@ const sortPhotos = (a, b) => {
 }
 
 const randomSort = () => {
-  return getRandomIntegerNumber(0, 2) - 1
+  return getRandomIntegerNumber(0, 2) - 1;
 }
 
 const sortArrayRandom = () => {

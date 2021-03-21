@@ -11,8 +11,6 @@ const MAX_NAME_LENGHT = 20;
 const MIN_NAME_LENGTH = 2;
 const MAX_TEXT_LENGTH = 100;
 const COLOR = 'red';
-// const COLOR_NONE = 'none';
-
 
 const textHashtags = document.querySelector('.text__hashtags');
 const textDescription = document.querySelector('.text__description');
