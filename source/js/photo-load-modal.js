@@ -5,6 +5,11 @@ import {
   imgUploadPreview,
   destroyImgFilter
 } from './create-effects-photo.js';
+import {
+  toScalePhoto,
+  onBtnMinusPress,
+  onBtnPlusPress
+} from './to-scale-photo.js';
 
 const imgUploadPreviewContainer = document.querySelector('.img-upload__preview-container');
 const sliderWrapper = document.querySelector('.effect-level');
@@ -17,7 +22,8 @@ const effectNone = document.querySelector('#effect-none');
 const textHashtags = document.querySelector('.text__hashtags');
 const textDescription = document.querySelector('.text__description');
 
-let inputValueHidden = document.querySelector('.scale__control--hidden');
+const btnPlus = document.querySelector('.scale__control--bigger');
+const btnMinus = document.querySelector('.scale__control--smaller');
 
 const onPhotoEscPress = (evt) => {
   if (isEscEvent(evt)) {
@@ -32,6 +38,11 @@ const photoLoadModal = () => {
   uploadInput.addEventListener('change', () => {
     uploadOverlay.classList.remove('hidden');
     body.classList.add('modal-open');
+
+    btnMinus.removeEventListener('click', onBtnMinusPress);
+    btnPlus.removeEventListener('click', onBtnPlusPress);
+    toScalePhoto();
+
     document.addEventListener('keydown', onPhotoEscPress);
     if (imgUploadPreviewContainer.contains(sliderWrapper)) {
       destroyImgFilter();
@@ -39,7 +50,6 @@ const photoLoadModal = () => {
     effectNone.checked = true;
     textHashtags.value = '';
     textDescription.value = '';
-    inputValueHidden.value = 100;
   });
 
   const closeButton = () => {

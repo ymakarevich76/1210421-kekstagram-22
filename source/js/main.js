@@ -9,9 +9,6 @@ import {
   photoLoadModal
 } from './photo-load-modal.js';
 import {
-  toScalePhoto
-} from './to-scale-photo.js';
-import {
   createEffectsPhoto
 } from './create-effects-photo.js';
 import {
@@ -39,8 +36,6 @@ let arrPictures = [];
 createCloseModal();
 photoLoad();
 photoLoadModal();
-const counts = document.querySelectorAll('.img-upload__scale');
-counts.forEach(toScalePhoto);
 createEffectsPhoto();
 onValidationForm();
 filterRenderPhoto();
