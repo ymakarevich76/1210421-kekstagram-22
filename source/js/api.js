@@ -1,6 +1,9 @@
 /* eslint-disable indent */
+const URL_GET = 'https://22.javascript.pages.academy/kekstagram/data';
+const URL_SEND = 'https://22.javascript.pages.academy/kekstagram';
+
 const getData = (onSuccess, onError) => {
-  fetch('https://22.javascript.pages.academy/kekstagram/data')
+  fetch(URL_GET)
     .then((response) => response.json())
     .then((pictures) => {
       onSuccess(pictures);
@@ -11,7 +14,7 @@ const getData = (onSuccess, onError) => {
 };
 const sendData = (onSuccess, showAlertError, body) => {
   fetch(
-      'https://22.javascript.pages.academy/kekstagram', {
+      URL_SEND, {
         method: 'POST',
         body,
       },
