@@ -14,11 +14,11 @@ const getData = (onSuccess, onError) => {
 };
 const sendData = (onSuccess, showAlertError, body) => {
   fetch(
-      URL_SEND, {
-        method: 'POST',
-        body,
-      },
-    )
+    URL_SEND, {
+      method: 'POST',
+      body,
+    },
+  )
     .then((response) => {
       if (response.ok) {
         onSuccess();
